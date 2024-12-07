@@ -11,9 +11,7 @@ st.set_page_config(layout="wide")
 repo = "Azeved0/Controlo-de-Gastos"  # Your repo name
 file_path = "Despesas.csv"  # Path to the file in the repository
 branch = "main"  # Branch name
-[secrets]
-GITHUB_TOKEN = "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"
-token = st.secrets["GITHUB_TOKEN"]
+token = "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"
 
 # URL of the raw CSV file
 url = f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/{file_path}"
