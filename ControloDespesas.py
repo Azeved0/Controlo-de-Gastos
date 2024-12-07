@@ -14,7 +14,9 @@ branch = "main"  # Branch name
 token = "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"
 
 # URL of the raw CSV file
-url = f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/{file_path}"
+#url = f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/{file_path}"
+url = f"https://raw.githubusercontent.com/{repo}/{branch}/{file_path}"
+
 
 # Load the CSV file into a DataFrame
 response = requests.get(url)
