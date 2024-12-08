@@ -57,6 +57,8 @@ if st.button("Submeter"):
     # Get the current file's SHA
     headers = {"Authorization": f"token {token}"}
     response = requests.get(api_url, headers=headers)
+    st.write(response.status_code)
+    st.write(response.json())
     if response.status_code == 200:
         sha = response.json()["sha"]
     else:
