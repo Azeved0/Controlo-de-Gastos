@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "controlo-de-gastos-444201",
+  "private_key_id": "03427c9696302efe60f1f788dafc8391ebd7f367",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCUoz1FlT54lKh9\nht5ucEO7f2FgOFQyspsi/AFfm2NX4MzMHucYaP4iY3q0PvI10Jv4wvXCwN2fpfb6\nAiWnid8xAhAT7T456TBL1FjXpdYmZtevB6DTdrmlsAH9F5Rn9VWzbJ8oOLMzXp8f\nBrlUT3Ys5gxhNZB0qC0+5gqWqOPaEjmXYkRrqS7UduoPKfum+2CtHc3ddhKevouT\nildzu5vD8S3IHxMYKl1//wpQYHmU2NmoVWOHl03J3/Riuu2lojPYKpy8NngQAkUv\nosCq2Ve+8I4eGs3zpTpfOmCEfUdnq/x0HFHcBk0tOLaA+Je9wey1sgVR8hwwVOF2\npcz/TOGJAgMBAAECggEABRjE3tgzhHB6h5VilrBgTjNbvDAqSPPBaJVyGZxrL2X8\nt8oefAKLplO5bylSZmCBHKpYwYUaBGGtQpzkvCY44kYTFY/WyKcTmiINqtVbrsTr\ng+uzytSBIKqUouBWXSs3NVgV7Avnry0BMU/qdnbkEz2PMp0i1zE2HfhG6Cwh5gYZ\nC9yOMKQFvzZla2JK0NYMyRWG6Dtle9IGJZdNia8KFTtM89jZSb9OdVg8gys28USd\nh51ptzsJS4buGBbOVsJBBDuJ1YTeQOBi61BqCx4rH8G0/VYveLHu3MiqwC4vlU3E\nbHyi4A/DB76s6Rz+GikimEi4I/v3YR8qVdPcASSa5QKBgQDSClsl6ctxDrbA+Oqs\nkW86MrlQ5x9ZSDtIKG9LWH3PlpgiV18oXVs+FggPDtpnKmmBIymXwGvMQdYQPTxR\navfrz7itpQy3UlboKTI+auhmIsDN3qwI2TpAcVic8O144iq6btnMJpx4Ghn/eFLu\nAohWdOE/FefW/hPpRRnK6Q0zlQKBgQC1KVa9xPey3dszZJkcF3iK8AiASxZAOC50\ns+7N6MRyEP7qVKnNNtqa2rEjXZQSMJ2P6iL1UBkTtUuFpm54gkBdORweTXMyxb3X\nWWPaDDLfymYs3NiXm2H/r5DhA0sHHGevov/lhM/rg/0BndUdBsDc3MoBP7Om5gnI\nF8eMhjd5JQKBgF4gB/K4j9PNbTaTFc9ZqUeiXYuU12aSSQawIBfawx6Y9PpGvzz+\ngRoUk230EQm0Zu1ZDZWUxHoXcs96MaKm1g1V3APs+ALbIlkNxRdVn2nN3ysiw2N/\nvWwNn1FNYo4OhGlhrbagAvSLdeUXTcqdVe2wmRRFQ80DtXaO4d0djS31AoGAKJiQ\n5Ymj8CMjIcsjPFZOHuRXI1iwLcfpMSG5G89TZjREy4IZYvEt35GuLDymF8VpKXzQ\nRKSkWfRAbjyzeLHHdpx7npbAf9osBnvzkkM1i0yxxM/ggWjCdyeCkcnJIFjPK16d\ndXNjnGVBZwFVZmHDCjs30TvTKE1YV8xsXSMefzkCgYAP7EYLbxvH9lBWx+qAFQ2N\nchUUqp0/ZDnLG7C7vqyzGPmLGHKarkM6cdafBrxBUyb0auJzkTAJlm+QjtraGIk7\n+0cLZt82nJSw7uBcOroBRM2HKWNTcHJQyVrxr0ou4GT9o0PBlsQhVrVChF4Qv4ID\nUU9gY/qg4DHCFcHaq5uHAQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "streamlitgastos@controlo-de-gastos-444201.iam.gserviceaccount.com",
+  "client_id": "100124852013614963534",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/streamlitgastos%40controlo-de-gastos-444201.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
