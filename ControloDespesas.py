@@ -32,7 +32,7 @@ if st.button("Add Entry"):
     new_row = {
         "Insert_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "Category": category,
-        "Value": value,
+        "Value": float(value),
         "Comments": comments
     }
     df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
