@@ -16,8 +16,11 @@ client = gspread.authorize(credentials)
 sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 
 # Read data from Google Sheets
-data = sheet.get_all_records()
-df = pd.DataFrame(data)
+data = sheet.get_all_values()
+df = pd.DataFrame(data[1:], columns=data[0])
+
+# Convert columns to appropriate data types
+df["Value"] = pd.to_numeric(df["Value"], errors='coerce')
 
 st.title("Monitorização de Gastos 😁")
 st.write("Current data:")
