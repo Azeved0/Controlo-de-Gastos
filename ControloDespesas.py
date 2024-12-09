@@ -6,8 +6,8 @@ import gspread
 
 # Google Sheets Setup
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-CREDENTIALS_FILE = "path/to/your/credentials.json"  # Replace with your service account JSON
-SPREADSHEET_ID = "your_google_sheet_id"  # Replace with your Google Sheets ID
+CREDENTIALS_FILE = "controlo-de-gastos-444201-97db089901b4.json"  # Replace with your service account JSON
+SPREADSHEET_ID = "1ZssUo6wfy4wZO9eQPljOTdwzF7dTSpxZ1_wNa6yGqaw"  # Replace with your Google Sheets ID
 
 # Authenticate with Google Sheets
 credentials = Credentials.from_service_account_file(CREDENTIALS_FILE, scopes=SCOPES)
