@@ -19,9 +19,6 @@ sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 data = sheet.get_all_values()
 df = pd.DataFrame(data[1:], columns=data[0])
 
-# Convert columns to appropriate data types
-df["Value"] = pd.to_numeric(df["Value"], errors='coerce')
-
 st.title("Monitorização de Gastos 😁")
 st.write("Current data:")
 st.write(df)
