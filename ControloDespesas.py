@@ -3,13 +3,10 @@ import streamlit as st
 from datetime import datetime
 from google.oauth2.service_account import Credentials
 import gspread
-import os 
-
-print("Current script path:", os.path.abspath(__file__))
 
 # Google Sheets Setup
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-CREDENTIALS_FILE = r"controlo-de-gastos-444201-03427c969630.json"  # Replace with your service account JSON
+CREDENTIALS_FILE = "controlo-de-gastos-444201-03427c969630.json"  # Replace with your service account JSON
 SPREADSHEET_ID = "1ZssUo6wfy4wZO9eQPljOTdwzF7dTSpxZ1_wNa6yGqaw"  # Replace with your Google Sheets ID
 
 # Authenticate with Google Sheets
