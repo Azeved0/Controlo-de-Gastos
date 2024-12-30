@@ -24,7 +24,7 @@ st.write("Current data:")
 st.write(df)
 
 # Add a new entry
-existing_categories = df['Category'].unique().to_list()
+existing_categories = df['Category'].unique().tolist()
 category = st.selectbox("Categoria", existing_categories)
 new_category = st.text_input("Nova Categoria")
 value = st.number_input("Value", value=None)
