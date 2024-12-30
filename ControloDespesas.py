@@ -24,9 +24,13 @@ st.write("Current data:")
 st.write(df)
 
 # Add a new entry
-category = st.selectbox("Categoria", ["renda", "restauração", "combustível", "outros"])
+existing_categories = df['Category'].unique().to_list()
+category = st.selectbox("Categoria", existing_categories)
+new_category = st.text_input("Nova Categoria")
 value = st.number_input("Value", value=None)
 comments = st.text_area("Comentários")
+if new_category != "":
+    category = new_category
 
 if st.button("Add Entry"):
     new_row = {
