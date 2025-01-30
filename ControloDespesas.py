@@ -110,9 +110,7 @@ with st.container():
     # Display the ECharts pie chart in Streamlit
     st_echarts(options=option, height="500px")
 
-# Monthly evolution
-st.subheader("Evolução mensal")
-
+## Monthly evolution
 # Extract month and year from 'Insert_date'
 df['Month'] = df['Insert_date'].dt.to_period('M')
 
@@ -140,7 +138,7 @@ for category in pivot_df.columns:
 # Define the ECharts option
 option = {
     "title": {
-        "text": 'Categorias:'
+        "text": 'Evolução mensal'
     },
     "tooltip": {
         "trigger": 'axis'
@@ -159,5 +157,6 @@ option = {
     "series": echarts_data
 }
 
-# Display the ECharts line chart in Streamlit
-st_echarts(options=option, height="500px")
+with st.container():
+    # Display the ECharts line chart in Streamlit
+    st_echarts(options=option, height="500px")
