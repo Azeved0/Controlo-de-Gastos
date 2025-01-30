@@ -47,7 +47,7 @@ if st.button("Add Entry"):
     st.success("Entry added and Google Sheets updated!")
 
 ## Data visualization
-st.subtitle("Visualização de dados")
+st.header("Visualização de dados")
 
 # Convert 'insert_date' to datetime and 'value' to float
 df['Insert_date'] = pd.to_datetime(df['Insert_date'])
