@@ -22,7 +22,7 @@ df = pd.DataFrame(data[1:], columns=data[0])
 
 st.set_page_config(
     page_title="Ex-stream-ly Cool App",
-    page_icon="🧊",
+    page_icon="💲💹🪙💵",
     layout="wide",
     menu_items={
         'Get Help': 'https://www.extremelycoolapp.com/help',
