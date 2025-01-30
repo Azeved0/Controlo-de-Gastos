@@ -48,8 +48,9 @@ if st.button("Add Entry"):
     st.success("Entry added and Google Sheets updated!")
 
 ## Data visualization
-# Convert 'insert_date' to datetime
+# Convert 'insert_date' to datetime and 'value' to float
 df['Insert_date'] = pd.to_datetime(df['Insert_date'])
+df['Value'] = df['Value'].astype(float)
 
 # Filter DataFrame for rows where 'insert_date' is in January
 january_df = df[df['Insert_date'].dt.month == 1]
