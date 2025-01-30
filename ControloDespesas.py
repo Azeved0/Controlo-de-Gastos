@@ -134,8 +134,7 @@ for category in pivot_df.columns:
     echarts_data.append({
         "name": category,
         "type": "line",
-        "data": pivot_df[category].tolist(),
-        "selected": {category: (category == 'Total') for category in pivot_df.columns}
+        "data": pivot_df[category].tolist()
     })
 
 # Define the ECharts option
@@ -147,7 +146,8 @@ option = {
         "trigger": 'axis'
     },
     "legend": {
-        "data": pivot_df.columns.tolist()
+        "data": pivot_df.columns.tolist(),
+        "selected": {category: (category == 'Total') for category in pivot_df.columns}
     },
     "xAxis": {
         "type": 'category',
