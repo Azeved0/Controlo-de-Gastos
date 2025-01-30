@@ -61,6 +61,9 @@ echarts_data = january_df[['Value', 'Category']].rename(columns={'Value': 'value
 # Group by 'Category' and sum the 'Value' column
 grouped_df = january_df.groupby('Category')['Value'].sum().round(2).reset_index()
 
+# Order the DataFrame by the sum of the 'Value' column in descending order
+grouped_df = grouped_df.sort_values(by='Value', ascending=False)
+
 # Convert DataFrame to list of dictionaries for ECharts
 echarts_data = grouped_df.rename(columns={'Value': 'value', 'Category': 'name'}).to_dict(orient='records')
 
