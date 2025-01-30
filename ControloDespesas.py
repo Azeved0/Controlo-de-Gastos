@@ -61,6 +61,9 @@ with st.container():
     month_number = month_mapping[month]
     month_df = df[df['Insert_date'].dt.month == month_number]
 
+    # Get sum of total spendings
+    month_sum = sum(month_df["Value"])
+
     # Convert DataFrame to list of dictionaries for ECharts
     echarts_data = month_df[['Value', 'Category']].rename(columns={'Value': 'value', 'Category': 'name'}).to_dict(orient='records')
 
@@ -77,7 +80,7 @@ with st.container():
     option = {
         "title": {
             "text": f"Gastos por categoria",
-            "subtext": month,
+            "subtext": f"Total de {month}: {month_sum}",
             "left": 'center'
         },
         "tooltip": {
