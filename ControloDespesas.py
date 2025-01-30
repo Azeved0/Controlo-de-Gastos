@@ -76,8 +76,8 @@ with st.container():
     # Define the ECharts option
     option = {
         "title": {
-            "text": 'Referer of a Website',
-            "subtext": 'January Data',
+            "text": f"Gastos por categoria",
+            "subtext": month,
             "left": 'center'
         },
         "tooltip": {
