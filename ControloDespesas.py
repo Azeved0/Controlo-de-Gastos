@@ -43,7 +43,7 @@ with st.expander("Adicionar despesa"):
     if new_category != "":
         category = new_category
     
-    if st.button("Add Entry"):
+    if st.button("Adicionar"):
         new_row = {
             "Insert_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "Category": category,
@@ -55,9 +55,10 @@ with st.expander("Adicionar despesa"):
         # Update Google Sheets
         sheet.clear()  # Clear the sheet
         sheet.update([df.columns.values.tolist()] + df.values.tolist())  # Write new data
-        st.success("Entry added and Google Sheets updated!")
+        st.success("Despesa adicionada com sucesso!")
     
     #Tailing last records
+    st.write("Últimos registos:")
     st.write(df.tail(5))
     
 ## Data visualization
