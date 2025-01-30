@@ -21,7 +21,6 @@ data = sheet.get_all_values()
 df = pd.DataFrame(data[1:], columns=data[0])
 
 st.title("Monitorização de Gastos 😁")
-st.write("Current data:")
 st.write(df.tail(5))
 
 # Add a new entry
@@ -48,55 +47,62 @@ if st.button("Add Entry"):
     st.success("Entry added and Google Sheets updated!")
 
 ## Data visualization
+st.subtitle("Visualização de dados")
+
 # Convert 'insert_date' to datetime and 'value' to float
 df['Insert_date'] = pd.to_datetime(df['Insert_date'])
 df['Value'] = df['Value'].astype(float)
 
-# Filter DataFrame for rows where 'insert_date' is in January
-january_df = df[df['Insert_date'].dt.month == 1]
+# Creating a container to insert pretended month and respective piechart
+with st.container():
+    # Filter DataFrame for rows where 'insert_date' is in selected month
+    month = st.selectbox("Month:",("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"))
+    month_mapping = {"Janeiro": 1,"Fevereiro": 2,"Março": 3,"Abril": 4,"Maio": 5,"Junho": 6,"Julho": 7,"Agosto": 8,"Setembro": 9,"Outubro": 10,"Novembro": 11,"Dezembro": 12}
+    month_number = month_mapping[month]
+    month_df = df[df['Insert_date'].dt.month == 1]
 
-# Convert DataFrame to list of dictionaries for ECharts
-echarts_data = january_df[['Value', 'Category']].rename(columns={'Value': 'value', 'Category': 'name'}).to_dict(orient='records')
+    # Convert DataFrame to list of dictionaries for ECharts
+    echarts_data = month_df[['Value', 'Category']].rename(columns={'Value': 'value', 'Category': 'name'}).to_dict(orient='records')
 
-# Group by 'Category' and sum the 'Value' column
-grouped_df = january_df.groupby('Category')['Value'].sum().round(2).reset_index()
+    # Group by 'Category' and sum the 'Value' column
+    grouped_df = month_df.groupby('Category')['Value'].sum().round(2).reset_index()
 
-# Order the DataFrame by the sum of the 'Value' column in descending order
-grouped_df = grouped_df.sort_values(by='Value', ascending=False)
+    # Order the DataFrame by the sum of the 'Value' column in descending order
+    grouped_df = grouped_df.sort_values(by='Value', ascending=False)
 
-# Convert DataFrame to list of dictionaries for ECharts
-echarts_data = grouped_df.rename(columns={'Value': 'value', 'Category': 'name'}).to_dict(orient='records')
+    # Convert DataFrame to list of dictionaries for ECharts
+    echarts_data = grouped_df.rename(columns={'Value': 'value', 'Category': 'name'}).to_dict(orient='records')
 
-# Define the ECharts option
-option = {
-    "title": {
-        "text": 'Referer of a Website',
-        "subtext": 'January Data',
-        "left": 'center'
-    },
-    "tooltip": {
-        "trigger": 'item'
-    },
-    "legend": {
-        "orient": 'vertical',
-        "left": 'left'
-    },
-    "series": [
-        {
-            "name": 'Access From',
-            "type": 'pie',
-            "radius": '50%',
-            "data": echarts_data,
-            "emphasis": {
-                "itemStyle": {
-                    "shadowBlur": 10,
-                    "shadowOffsetX": 0,
-                    "shadowColor": 'rgba(0, 0, 0, 0.5)'
+    # Define the ECharts option
+    option = {
+        "title": {
+            "text": 'Referer of a Website',
+            "subtext": 'January Data',
+            "left": 'center'
+        },
+        "tooltip": {
+            "trigger": 'item'
+        },
+        "legend": {
+            "orient": 'vertical',
+            "left": 'left'
+        },
+        "series": [
+            {
+                "name": 'Access From',
+                "type": 'pie',
+                "radius": '50%',
+                "data": echarts_data,
+                "emphasis": {
+                    "itemStyle": {
+                        "shadowBlur": 10,
+                        "shadowOffsetX": 0,
+                        "shadowColor": 'rgba(0, 0, 0, 0.5)'
+                    }
                 }
             }
-        }
-    ]
-}
+        ]
+    }
 
-# Display the ECharts pie chart in Streamlit
-st_echarts(options=option, height="500px")
+    # Display the ECharts pie chart in Streamlit
+    st_echarts(options=option, height="500px")
