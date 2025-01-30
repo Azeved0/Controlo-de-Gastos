@@ -21,7 +21,7 @@ data = sheet.get_all_values()
 df = pd.DataFrame(data[1:], columns=data[0])
 
 st.set_page_config(
-    page_title="Ex-stream-ly Cool App",
+    page_title="Monitorização de Gastos",
     page_icon="🪙",
     layout="wide",
     menu_items={
@@ -33,7 +33,7 @@ st.set_page_config(
 
 st.title("Monitorização de Gastos 😁")
 
-with st.expander("Add a New Bill"):
+with st.expander("Adicionar despesa"):
     # Add a new entry
     existing_categories = df['Category'].unique().tolist()
     category = st.selectbox("Categoria", existing_categories)
