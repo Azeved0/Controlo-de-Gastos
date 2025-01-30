@@ -22,7 +22,7 @@ df = pd.DataFrame(data[1:], columns=data[0])
 
 st.title("Monitorização de Gastos 😁")
 st.write("Current data:")
-st.write(df)
+st.write(df.tail(5))
 
 # Add a new entry
 existing_categories = df['Category'].unique().tolist()
