@@ -24,8 +24,6 @@ st.title("Monitorização de Gastos 😁")
 st.write("Current data:")
 st.write(df)
 
-st.write(df.columns)
-
 # Add a new entry
 existing_categories = df['Category'].unique().tolist()
 category = st.selectbox("Categoria", existing_categories)
@@ -50,6 +48,9 @@ if st.button("Add Entry"):
     st.success("Entry added and Google Sheets updated!")
 
 ## Data visualization
+# Convert 'insert_date' to datetime
+df['Insert_date'] = pd.to_datetime(df['Insert_date'])
+
 # Filter DataFrame for rows where 'insert_date' is in January
 january_df = df[df['Insert_date'].dt.month == 1]
 
