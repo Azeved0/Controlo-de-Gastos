@@ -3,6 +3,7 @@ import streamlit as st
 from datetime import datetime
 from google.oauth2.service_account import Credentials
 import gspread
+from streamlit_echarts import st_echarts
 
 # Google Sheets Setup
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
@@ -45,3 +46,50 @@ if st.button("Add Entry"):
     sheet.clear()  # Clear the sheet
     sheet.update([df.columns.values.tolist()] + df.values.tolist())  # Write new data
     st.success("Entry added and Google Sheets updated!")
+
+## Data visualization
+# Filter DataFrame for rows where 'insert_date' is in January
+january_df = df[df['Insert_date'].dt.month == 1]
+
+# Convert DataFrame to list of dictionaries for ECharts
+echarts_data = january_df[['Value', 'Category']].rename(columns={'Value': 'value', 'Category': 'name'}).to_dict(orient='records')
+
+# Group by 'Category' and sum the 'Value' column
+grouped_df = january_df.groupby('Category')['Value'].sum().round(2).reset_index()
+
+# Convert DataFrame to list of dictionaries for ECharts
+echarts_data = grouped_df.rename(columns={'Value': 'value', 'Category': 'name'}).to_dict(orient='records')
+
+# Define the ECharts option
+option = {
+    "title": {
+        "text": 'Referer of a Website',
+        "subtext": 'January Data',
+        "left": 'center'
+    },
+    "tooltip": {
+        "trigger": 'item'
+    },
+    "legend": {
+        "orient": 'vertical',
+        "left": 'left'
+    },
+    "series": [
+        {
+            "name": 'Access From',
+            "type": 'pie',
+            "radius": '50%',
+            "data": echarts_data,
+            "emphasis": {
+                "itemStyle": {
+                    "shadowBlur": 10,
+                    "shadowOffsetX": 0,
+                    "shadowColor": 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+}
+
+# Display the ECharts pie chart in Streamlit
+st_echarts(options=option, height="500px")
