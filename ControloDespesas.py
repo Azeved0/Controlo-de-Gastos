@@ -109,3 +109,11 @@ with st.container():
 
     # Display the ECharts pie chart in Streamlit
     st_echarts(options=option, height="500px")
+
+# Monthly evolution
+st.subheader("Evolução mensal")
+
+# Extract month and year from 'Insert_date'
+df['Month'] = df['Insert_date'].dt.to_period('M')
+
+st.write(df)
