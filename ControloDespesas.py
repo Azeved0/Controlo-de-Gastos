@@ -125,4 +125,35 @@ pivot_df = grouped_df.pivot(index='Month', columns='Category', values='Value').f
 # Format the month display
 pivot_df.index = pivot_df.index.strftime('%b %y')
 
-st.write(pivot_df)
+# Convert the pivot table to a format suitable for ECharts
+echarts_data = []
+for category in pivot_df.columns:
+    echarts_data.append({
+        "name": category,
+        "type": "line",
+        "data": pivot_df[category].tolist()
+    })
+
+# Define the ECharts option
+option = {
+    "title": {
+        "text": 'Monthly Spending by Category'
+    },
+    "tooltip": {
+        "trigger": 'axis'
+    },
+    "legend": {
+        "data": pivot_df.columns.tolist()
+    },
+    "xAxis": {
+        "type": 'category',
+        "data": pivot_df.index.tolist()
+    },
+    "yAxis": {
+        "type": 'value'
+    },
+    "series": echarts_data
+}
+
+# Display the ECharts line chart in Streamlit
+st_echarts(options=option, height="500px")
