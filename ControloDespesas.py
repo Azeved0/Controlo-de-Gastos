@@ -59,7 +59,7 @@ with st.container():
     month = st.selectbox("Month:",("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"))
     month_mapping = {"Janeiro": 1,"Fevereiro": 2,"Março": 3,"Abril": 4,"Maio": 5,"Junho": 6,"Julho": 7,"Agosto": 8,"Setembro": 9,"Outubro": 10,"Novembro": 11,"Dezembro": 12}
     month_number = month_mapping[month]
-    month_df = df[df['Insert_date'].dt.month == 1]
+    month_df = df[df['Insert_date'].dt.month == month_number]
 
     # Convert DataFrame to list of dictionaries for ECharts
     echarts_data = month_df[['Value', 'Category']].rename(columns={'Value': 'value', 'Category': 'name'}).to_dict(orient='records')
