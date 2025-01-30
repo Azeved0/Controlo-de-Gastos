@@ -32,31 +32,34 @@ st.set_page_config(
 )
 
 st.title("Monitorização de Gastos 😁")
-st.write(df.tail(5))
 
-# Add a new entry
-existing_categories = df['Category'].unique().tolist()
-category = st.selectbox("Categoria", existing_categories)
-new_category = st.text_input("Nova Categoria")
-value = st.number_input("Value", value=None)
-comments = st.text_area("Comentários")
-if new_category != "":
-    category = new_category
-
-if st.button("Add Entry"):
-    new_row = {
-        "Insert_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "Category": category,
-        "Value": str(value),
-        "Comments": comments
-    }
-    df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+with st.expander("Add a New Bill"):
+    # Add a new entry
+    existing_categories = df['Category'].unique().tolist()
+    category = st.selectbox("Categoria", existing_categories)
+    new_category = st.text_input("Nova Categoria")
+    value = st.number_input("Value", value=None)
+    comments = st.text_area("Comentários")
+    if new_category != "":
+        category = new_category
     
-    # Update Google Sheets
-    sheet.clear()  # Clear the sheet
-    sheet.update([df.columns.values.tolist()] + df.values.tolist())  # Write new data
-    st.success("Entry added and Google Sheets updated!")
-
+    if st.button("Add Entry"):
+        new_row = {
+            "Insert_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "Category": category,
+            "Value": str(value),
+            "Comments": comments
+        }
+        df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+        
+        # Update Google Sheets
+        sheet.clear()  # Clear the sheet
+        sheet.update([df.columns.values.tolist()] + df.values.tolist())  # Write new data
+        st.success("Entry added and Google Sheets updated!")
+    
+    #Tailing last records
+    st.write(df.tail(5))
+    
 ## Data visualization
 st.header("Visualização de dados")
 
