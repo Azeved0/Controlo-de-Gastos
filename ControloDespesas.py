@@ -119,4 +119,7 @@ df['Month'] = df['Insert_date'].dt.to_period('M')
 # Group by month and category, and sum the values
 grouped_df = df.groupby(['Month', 'Category'])['Value'].sum().reset_index()
 
-st.write(grouped_df)
+# Pivot the DataFrame to have months as index and categories as columns
+pivot_df = grouped_df.pivot(index='Month', columns='Category', values='Value').fillna(0)
+
+st.write(pivot_df)
