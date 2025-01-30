@@ -20,6 +20,17 @@ sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 data = sheet.get_all_values()
 df = pd.DataFrame(data[1:], columns=data[0])
 
+st.set_page_config(
+    page_title="Ex-stream-ly Cool App",
+    page_icon="🧊",
+    layout="wide",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    }
+)
+
 st.title("Monitorização de Gastos 😁")
 st.write(df.tail(5))
 
