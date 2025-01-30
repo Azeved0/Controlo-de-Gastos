@@ -140,7 +140,7 @@ for category in pivot_df.columns:
 # Define the ECharts option
 option = {
     "title": {
-        "text": 'Categorias: '
+        "text": 'Categorias:'
     },
     "tooltip": {
         "trigger": 'axis'
