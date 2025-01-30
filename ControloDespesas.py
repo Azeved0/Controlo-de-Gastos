@@ -24,6 +24,8 @@ st.title("Monitorização de Gastos 😁")
 st.write("Current data:")
 st.write(df)
 
+st.write(df.columns)
+
 # Add a new entry
 existing_categories = df['Category'].unique().tolist()
 category = st.selectbox("Categoria", existing_categories)
