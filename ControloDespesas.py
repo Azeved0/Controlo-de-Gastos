@@ -122,6 +122,9 @@ grouped_df = df.groupby(['Month', 'Category'])['Value'].sum().reset_index()
 # Pivot the DataFrame to have months as index and categories as columns
 pivot_df = grouped_df.pivot(index='Month', columns='Category', values='Value').fillna(0)
 
+# Add a category being the sum of all other categories grouped by month
+pivot_df['Total'] = pivot_df.sum(axis=1)
+
 # Format the month display
 pivot_df.index = pivot_df.index.strftime('%b %y')
 
