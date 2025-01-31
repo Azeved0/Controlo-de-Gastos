@@ -4,6 +4,11 @@ from datetime import datetime
 from google.oauth2.service_account import Credentials
 import gspread
 from streamlit_echarts import st_echarts
+import streamlit as st
+from streamlit_autorefresh import st_autorefresh
+
+# Set the interval to refresh every 5 minutes (300 seconds)
+st_autorefresh(interval=300 * 1000, key="keep_alive")
 
 # Google Sheets Setup
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
