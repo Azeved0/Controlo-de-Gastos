@@ -33,8 +33,8 @@ st.set_page_config(
     }
 )
 
-# Set the interval to refresh every 5 minutes (300 seconds)
-st_autorefresh(interval=300 * 1000, key="keep_alive")
+# Set the interval to refresh every 50 minutes (3000 seconds)
+st_autorefresh(interval=300 * 10000, key="keep_alive")
 
 # Gui start
 st.title("Monitorização de Gastos 😁")
