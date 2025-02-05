@@ -212,7 +212,7 @@ for month in months:
     })
 
 # ECharts option
-option = {
+option = 
     {
     "title": {
         "text": 'Evolução diária'
