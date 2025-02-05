@@ -208,6 +208,22 @@ for month in months:
         'data': month_data['Cumulative_Value'].tolist()
     })
 
+# Color palette so every month stays the same color
+color_palette = [
+    '#ADD8E6',  # Light Blue
+    '#90EE90',  # Light Green
+    '#FFB6C1',  # Light Pink
+    '#FFD700',  # Gold
+    '#D3D3D3',  # Light Gray
+    '#FFA07A',  # Light Salmon
+    '#E6E6FA',  # Lavender
+    '#F0E68C',  # Khaki
+    '#DDA0DD',  # Plum
+    '#B0E0E6',  # Powder Blue
+    '#FFDEAD',  # Navajo White
+    '#98FB98'   # Pale Green
+]
+
 # ECharts option
 option = {
     "title": {
@@ -218,13 +234,7 @@ option = {
     },
     'tooltip': {
         'trigger': 'axis',
-        'formatter': function (params) {
-            let tooltipText = '';
-            params.forEach(param => {
-                tooltipText += `${param.seriesName}: ${param.value}<br/>`;
-            });
-            return tooltipText;
-        }
+        'formatter': '{b0}: {c0}'  # This will show the name and value
     },
     'xAxis': {
         'type': 'category',
@@ -234,7 +244,8 @@ option = {
     'yAxis': {
         'type': 'value'
     },
-    'series': series_data
+    'series': series_data,
+    'color': color_palette
 }
 
 with st.container():
