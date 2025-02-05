@@ -178,6 +178,8 @@ option = {
     "series": echarts_data
 }
 
+st.write(df)
+
 with st.container():
     # Display the ECharts line chart in Streamlit
     st_echarts(options=option, height="500px")
