@@ -159,23 +159,26 @@ for category in pivot_df.columns:
 # Define the ECharts option
 option = {
     "title": {
-        "text": 'Evolução mensal'
+        "text": 'Evolução diária'
     },
     "tooltip": {
-        "trigger": 'axis'
+        "trigger": 'item',
+        "formatter": function (params) {
+            return params.seriesName;
+        }
     },
     "legend": {
-        "data": pivot_df.columns.tolist(),
-        "selected": {category: (category == 'Total') for category in pivot_df.columns}
+        "data": [series['name'] for series in series_data]
     },
     "xAxis": {
         "type": 'category',
-        "data": pivot_df.index.tolist()
+        "boundaryGap": False,
+        "data": list(range(1, 32))  # Days of the month
     },
     "yAxis": {
         "type": 'value'
     },
-    "series": echarts_data
+    "series": series_data
 }
 
 with st.container():
@@ -214,7 +217,7 @@ option = {
         text: 'Evolução diária'
     },
     legend: {
-        data: series_data.map(series => series.name)  // Extract series names for the legend
+        data: series_data.map(series => series.name)  
     },
     xAxis: {
         type: 'category',
