@@ -216,6 +216,10 @@ option = {
     'legend': {
         'data': [series['name'] for series in series_data] 
     },
+    'tooltip': {
+        'trigger': 'axis',
+        'formatter': '{b0}: {c0}'  # This will show the name and value
+    },
     'xAxis': {
         'type': 'category',
         'boundaryGap': False,
