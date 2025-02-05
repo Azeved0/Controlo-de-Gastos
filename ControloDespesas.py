@@ -218,7 +218,13 @@ option = {
     },
     'tooltip': {
         'trigger': 'axis',
-        'formatter': '{b0}: {c0}'  # This will show the name and value
+        'formatter': function (params) {
+            let tooltipText = '';
+            params.forEach(param => {
+                tooltipText += `${param.seriesName}: ${param.value}<br/>`;
+            });
+            return tooltipText;
+        }
     },
     'xAxis': {
         'type': 'category',
