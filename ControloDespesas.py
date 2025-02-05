@@ -74,8 +74,6 @@ st.header("Visualização de dados")
 df['Insert_date'] = pd.to_datetime(df['Insert_date'])
 df['Value'] = df['Value'].astype(float)
 
-st.write(df.dtypes)
-
 # Creating a container to insert pretended month and respective piechart
 with st.container():
     # Filter DataFrame for rows where 'insert_date' is in selected month
@@ -183,3 +181,26 @@ option = {
 with st.container():
     # Display the ECharts line chart in Streamlit
     st_echarts(options=option, height="500px")
+
+## Daily evolution
+# Extract day and month from Insert_date
+df['Day'] = df['Insert_date'].dt.day
+df['Month'] = df['Insert_date'].dt.month
+
+# Group by Month and Day, then sum the values and accumulate over the month
+df['Cumulative_Value'] = df.groupby(['Month', 'Day'])['Value'].sum().groupby(level=0).cumsum()
+
+# Prepare data for ECharts
+months = df['Month'].unique()
+series_data = []
+
+for month in months:
+    month_data = df[df['Month'] == month]
+    series_data.append({
+        'name': f'Month {month}',
+        'type': 'line',
+        'areaStyle': {},
+        'data': month_data['Cumulative_Value'].tolist()
+    })
+
+st.write(df)
