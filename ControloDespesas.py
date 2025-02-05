@@ -202,7 +202,7 @@ series_data = []
 for month in months:
     month_data = df[df['month_num'] == month]
     series_data.append({
-        'name': f'Month {df['Month'][0]}',
+        'name': f'{month_data['Month'][0].index.strftime('%b %y')}',
         'type': 'line',
         'areaStyle': {},
         'data': month_data['Cumulative_Value'].tolist()
