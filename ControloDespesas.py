@@ -224,6 +224,8 @@ option = {
     'series': series_data
 }
 
+st.code(series_data)
+
 with st.container():
     # Display the ECharts line chart in Streamlit
     st_echarts(options=option, height="500px")
