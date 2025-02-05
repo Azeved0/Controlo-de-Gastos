@@ -74,6 +74,8 @@ st.header("Visualização de dados")
 df['Insert_date'] = pd.to_datetime(df['Insert_date'])
 df['Value'] = df['Value'].astype(float)
 
+st.write(df)
+
 # Creating a container to insert pretended month and respective piechart
 with st.container():
     # Filter DataFrame for rows where 'insert_date' is in selected month
