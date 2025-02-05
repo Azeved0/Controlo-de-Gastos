@@ -213,6 +213,9 @@ option = {
     "title": {
         "text": 'Evolução diária'
     },
+    'legend': {
+        'data': [series['name'] for series in series_data] 
+    },
     'xAxis': {
         'type': 'category',
         'boundaryGap': False,
@@ -223,8 +226,6 @@ option = {
     },
     'series': series_data
 }
-
-st.code(series_data)
 
 with st.container():
     # Display the ECharts line chart in Streamlit
