@@ -211,7 +211,7 @@ for month in months:
 # ECharts option
 option = {
     "title": {
-        "text": 'Evolução mensal'
+        "text": 'Evolução diária'
     },
     'xAxis': {
         'type': 'category',
@@ -223,6 +223,8 @@ option = {
     },
     'series': series_data
 }
+
+st.write(series_data)
 
 with st.container():
     # Display the ECharts line chart in Streamlit
