@@ -213,28 +213,20 @@ for month in months:
 
 # ECharts option
 option = {
-    title: {
-        text: 'Evolução diária'
+    {
+    "title": {
+        "text": 'Evolução diária'
     },
-    legend: {
-        data: series_data.map(series => series.name)  
+    'xAxis': {
+        'type': 'category',
+        'boundaryGap': False,
+        'data': list(range(1, 32))  # Days of the month
     },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: list(range(1, 32))  // Days of the month
+    'yAxis': {
+        'type': 'value'
     },
-    yAxis: {
-        type: 'value'
-    },
-    series: series_data,
-    tooltip: {
-        trigger: 'item',
-        formatter: function (params) {
-            return params.seriesName;
-        }
-    }
-};
+    'series': series_data
+}
 
 with st.container():
     # Display the ECharts line chart in Streamlit
