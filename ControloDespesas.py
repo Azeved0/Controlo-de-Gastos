@@ -208,5 +208,19 @@ for month in months:
         'data': month_data['Cumulative_Value'].tolist()
     })
 
-st.write(df)
-st.write(series_data)
+# ECharts option
+option = {
+    'xAxis': {
+        'type': 'category',
+        'boundaryGap': False,
+        'data': list(range(1, 32))  # Days of the month
+    },
+    'yAxis': {
+        'type': 'value'
+    },
+    'series': series_data
+}
+
+# Display the chart in Streamlit
+st.title('Monthly Cumulative Values')
+st_echarts(options=option)
