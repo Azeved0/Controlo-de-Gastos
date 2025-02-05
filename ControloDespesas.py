@@ -178,8 +178,6 @@ option = {
     "series": echarts_data
 }
 
-st.write(df)
-
 with st.container():
     # Display the ECharts line chart in Streamlit
     st_echarts(options=option, height="500px")
@@ -187,24 +185,24 @@ with st.container():
 ## Daily evolution
 # Extract day and month from Insert_date
 # Extract day and month from Insert_date
-df['Day'] = df['Insert_date'].dt.day
-df['Month'] = df['Insert_date'].dt.month
+df['day_num'] = df['Insert_date'].dt.day
+df['month_num'] = df['Insert_date'].dt.month
 
 # Group by Month and Day, then sum the values and accumulate over the month
-daily_sum = df.groupby(['Month', 'Day'])['Value'].sum().reset_index()
-daily_sum['Cumulative_Value'] = daily_sum.groupby('Month')['Value'].cumsum()
+daily_sum = df.groupby(['month_num', 'day_num'])['Value'].sum().reset_index()
+daily_sum['Cumulative_Value'] = daily_sum.groupby('month_num')['Value'].cumsum()
 
 # Merge the cumulative values back to the original DataFrame
-df = df.merge(daily_sum[['Month', 'Day', 'Cumulative_Value']], on=['Month', 'Day'], how='left')
+df = df.merge(daily_sum[['month_num', 'day_num', 'Cumulative_Value']], on=['month_num', 'day_num'], how='left')
 
 # Prepare data for ECharts
-months = df['Month'].unique()
+months = df['month_num'].unique()
 series_data = []
 
 for month in months:
-    month_data = df[df['Month'] == month]
+    month_data = df[df['month_num'] == month]
     series_data.append({
-        'name': f'Month {month}',
+        'name': f'Month {df['Month'][0]}',
         'type': 'line',
         'areaStyle': {},
         'data': month_data['Cumulative_Value'].tolist()
@@ -225,8 +223,6 @@ option = {
     },
     'series': series_data
 }
-
-st.code(series_data)
 
 with st.container():
     # Display the ECharts line chart in Streamlit
