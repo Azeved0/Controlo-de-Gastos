@@ -210,17 +210,29 @@ for month in months:
 
 # ECharts option
 option = {
-    'xAxis': {
-        'type': 'category',
-        'boundaryGap': False,
-        'data': list(range(1, 32))  # Days of the month
+    title: {
+        text: 'Evolução diária'
     },
-    'yAxis': {
-        'type': 'value'
+    legend: {
+        data: series_data.map(series => series.name)  // Extract series names for the legend
     },
-    'series': series_data
-}
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: list(range(1, 32))  // Days of the month
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: series_data,
+    tooltip: {
+        trigger: 'item',
+        formatter: function (params) {
+            return params.seriesName;
+        }
+    }
+};
 
-# Display the chart in Streamlit
-st.title('Monthly Cumulative Values')
-st_echarts(options=option)
+with st.container():
+    # Display the ECharts line chart in Streamlit
+    st_echarts(options=option, height="500px")
