@@ -224,7 +224,7 @@ option = {
     'series': series_data
 }
 
-st.display(series_data)
+st.code(series_data)
 
 with st.container():
     # Display the ECharts line chart in Streamlit
