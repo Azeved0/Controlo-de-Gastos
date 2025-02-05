@@ -187,6 +187,8 @@ with st.container():
 df['Day'] = df['Insert_date'].dt.day
 df['Month'] = df['Insert_date'].dt.month
 
+st.write(df)
+
 # Group by Month and Day, then sum the values and accumulate over the month
 df['Cumulative_Value'] = df.groupby(['Month', 'Day'])['Value'].sum().groupby(level=0).cumsum()
 
@@ -202,5 +204,3 @@ for month in months:
         'areaStyle': {},
         'data': month_data['Cumulative_Value'].tolist()
     })
-
-st.write(df)
