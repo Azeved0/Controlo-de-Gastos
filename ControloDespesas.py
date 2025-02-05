@@ -184,13 +184,16 @@ with st.container():
 
 ## Daily evolution
 # Extract day and month from Insert_date
+# Extract day and month from Insert_date
 df['Day'] = df['Insert_date'].dt.day
 df['Month'] = df['Insert_date'].dt.month
 
-st.write(df)
-
 # Group by Month and Day, then sum the values and accumulate over the month
-df['Cumulative_Value'] = df.groupby(['Month', 'Day'])['Value'].sum().groupby(level=0).cumsum()
+daily_sum = df.groupby(['Month', 'Day'])['Value'].sum().reset_index()
+daily_sum['Cumulative_Value'] = daily_sum.groupby('Month')['Value'].cumsum()
+
+# Merge the cumulative values back to the original DataFrame
+df = df.merge(daily_sum[['Month', 'Day', 'Cumulative_Value']], on=['Month', 'Day'], how='left')
 
 # Prepare data for ECharts
 months = df['Month'].unique()
@@ -204,3 +207,6 @@ for month in months:
         'areaStyle': {},
         'data': month_data['Cumulative_Value'].tolist()
     })
+
+st.write(df)
+st.write(series_data)
