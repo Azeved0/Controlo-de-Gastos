@@ -209,10 +209,9 @@ for month in months:
     })
 
 # ECharts option
-option = 
-    {
+option = {
     "title": {
-        "text": 'Evolução diária'
+        "text": 'Evolução mensal'
     },
     'xAxis': {
         'type': 'category',
