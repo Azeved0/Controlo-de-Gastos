@@ -195,11 +195,11 @@ daily_sum['Cumulative_Value'] = daily_sum.groupby('month_num')['Value'].cumsum()
 # Merge the cumulative values back to the original DataFrame
 df = df.merge(daily_sum[['month_num', 'day_num', 'Cumulative_Value']], on=['month_num', 'day_num'], how='left')
 
+st.write(df)
+
 # Prepare data for ECharts
 months = df['month_num'].unique()
 series_data = []
-
-st.write(months)
 
 for month in months:
     month_data = df[df['month_num'] == month]
