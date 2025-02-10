@@ -199,6 +199,8 @@ df = df.merge(daily_sum[['month_num', 'day_num', 'Cumulative_Value']], on=['mont
 months = df['month_num'].unique()
 series_data = []
 
+st.write(months)
+
 for month in months:
     month_data = df[df['month_num'] == month]
     series_data.append({
