@@ -224,6 +224,9 @@ color_palette = [
     '#98FB98'   # Pale Green
 ]
 
+# Extract unique days from the data
+days = sorted(df['day_num'].unique())
+
 # ECharts option
 option = {
     "title": {
@@ -239,7 +242,7 @@ option = {
     'xAxis': {
         'type': 'category',
         'boundaryGap': False,
-        'data': list(range(1, 32))  # Days of the month
+        'data': days  # Days of the month
     },
     'yAxis': {
         'type': 'value'
