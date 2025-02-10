@@ -224,7 +224,7 @@ color_palette = [
     '#98FB98'   # Pale Green
 ]
 
-st.write(series_data)
+st.write("UQWFUYWQVFUWQFWQFQFW")
 
 # ECharts option
 option = {
