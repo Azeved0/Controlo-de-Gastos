@@ -242,7 +242,7 @@ option = {
     'xAxis': {
         'type': 'category',
         'boundaryGap': False,
-        'data': days  # Days of the month
+        'data': list(range(0, 32))  # Days of the month  # Days of the month
     },
     'yAxis': {
         'type': 'value'
