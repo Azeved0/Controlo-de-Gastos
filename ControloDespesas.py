@@ -195,8 +195,6 @@ daily_sum['Cumulative_Value'] = daily_sum.groupby('month_num')['Value'].cumsum()
 # Merge the cumulative values back to the original DataFrame
 df = df.merge(daily_sum[['month_num', 'day_num', 'Cumulative_Value']], on=['month_num', 'day_num'], how='left')
 
-st.write(df)
-
 # Prepare data for ECharts
 months = df['month_num'].unique()
 series_data = []
@@ -204,12 +202,12 @@ series_data = []
 for month in months:
     month_data = df[df['month_num'] == month]
     series_data.append({
-        'name': f"{month_data['Month'].iloc[0].strftime('%b %y')}",
+        'name': f"{month_data['INSERT_DATE'].iloc[0].strftime('%b %y')}"
         'type': 'line',
         'areaStyle': {},
         'data': month_data['Cumulative_Value'].tolist()
     })
-
+    
 # Color palette so every month stays the same color
 color_palette = [
     '#ADD8E6',  # Light Blue
