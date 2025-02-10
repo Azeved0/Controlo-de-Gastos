@@ -205,7 +205,7 @@ for month in months:
         'name': f"{month_data['Insert_date'].iloc[0].strftime('%b %y')}",
         'type': 'line',
         'areaStyle': {},
-        'data': month_data['Cumulative_Value'].tolist()
+        'data': list(zip(month_data['day_num'], month_data['Cumulative_Value']))
     })
     
 # Color palette so every month stays the same color
