@@ -104,6 +104,8 @@ with st.container():
     
     # Create a selectbox with the default selected month as the current month
     month = st.selectbox("Month:", months, index=months.index(default_month))
+
+    st.write("default month: ", default_month)
     
     # Filter DataFrame for rows where 'insert_date' is in selected month
     #month = st.selectbox("Month:",("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"))
